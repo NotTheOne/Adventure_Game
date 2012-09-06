@@ -27,9 +27,10 @@ class Engine
   end
   
   def encounter
-    while @chance > 5
+    while @chance >= 5
       puts 'An enemey approaches.'
-      if @chance < 5
+      Process.exit(1)
+      if @chance <= 5
         play
       end
     end
@@ -49,10 +50,8 @@ class Game < Engine
    prompt; answer = gets.chomp
     
     if answer == 'left'
-      encounter
       return :west_room
     elsif answer == 'right'
-      encounter
       return :east_room
     else
       puts 'Please choose left or right.'
@@ -61,14 +60,15 @@ class Game < Engine
   end
   
   def west_room
-    
+    encounter
     puts 'You are in the west room.'
-   # return :encounter
+
   end
   
   def east_room
+    encounter
     puts 'You are in the east room.'
-  #  return :encounter
+
     
   end
   
