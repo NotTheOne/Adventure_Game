@@ -13,7 +13,7 @@ class Engine
 
       while true
         room = method(next_room)
-        next_room = room.call()
+        next_room = room.call
       end
   end
   
@@ -26,19 +26,17 @@ class Engine
     Process.exit(1)
   end
   
-#  def encounter
- #   while @chance < 3
-  #    return :west_room
-      
-   #   if @chance > 
-  #      puts 'An enemy approache'
-   #   end
-    #end
-    
-      
-#  end
-    
-
+  def encounter
+    while @chance > 5
+      puts 'An enemey approaches.'
+      if @chance < 5
+        play
+      end
+    end
+  end
+  
+  def fight
+  end
 
 end
 
@@ -51,8 +49,10 @@ class Game < Engine
    prompt; answer = gets.chomp
     
     if answer == 'left'
+      encounter
       return :west_room
     elsif answer == 'right'
+      encounter
       return :east_room
     else
       puts 'Please choose left or right.'
